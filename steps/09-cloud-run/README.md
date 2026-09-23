@@ -95,10 +95,12 @@ export CLOUD_RUN_REGION=us-central1
 export MODEL_LOCATION=global
 export AGENT_PATH="hotel_agent_app/"
 export SERVICE_NAME="hotels-service"
-export APP_NAME="hotels-app"
+export APP_NAME="hotels_app"
 export GOOGLE_GENAI_USE_ENTERPRISE=1
 ```
 
+> 🔴 **`APP_NAME` con guion bajo, no guion.** El codelab original usa `hotels-app`: con ADK 2.9.x el deploy funciona, la UI carga, pero el chat no responde nunca y `/run_sse` da `404` (`Invalid agent name`). Ver [T8](../../docs/troubleshooting.md#t8-en-cloud-run-el-chat-no-responde-y-run_sse-da-404).
+>
 > 🔴 **Dos variables, no una.** El codelab original usa `GOOGLE_CLOUD_LOCATION` para las dos cosas y después hace `--region=$GOOGLE_CLOUD_LOCATION`. Con `gemini-3.5-flash` eso no se puede: la región de Cloud Run tiene que ser una región real y la location del modelo tiene que ser `global`. Si pusieras `GOOGLE_CLOUD_LOCATION=global`, el deploy intentaría crear el servicio en una región llamada "global" y fallaría.
 
 Creá `requirements.txt` **dentro de `hotel_agent_app`** ([`files/requirements.txt`](../08-conectar-tools/files/requirements.txt)):
@@ -151,7 +153,7 @@ gcloud logging read \
 
 La regla para leer eso: **si no hay logs de aplicación, tu código no es el problema** — nunca se ejecutó. Los dos casos y sus causas están en [T5](../../docs/troubleshooting.md#t5-la-revisión-de-cloud-run-nunca-queda-ready).
 
-Y si el servicio arranca pero el chat responde con un 404 del modelo, es [T3](../../docs/troubleshooting.md#t3-en-cloud-run-el-modelo-vuelve-a-us-central1).
+Y si el servicio arranca pero el chat responde con un 404 del modelo, es [T3](../../docs/troubleshooting.md#t3-en-cloud-run-el-modelo-vuelve-a-us-central1). Si el chat directamente no hace nada y en los logs ves `POST /run_sse 404`, es [T8](../../docs/troubleshooting.md#t8-en-cloud-run-el-chat-no-responde-y-run_sse-da-404).
 
 ---
 

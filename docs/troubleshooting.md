@@ -13,6 +13,7 @@ Todos estos problemas aparecieron de verdad preparando el workshop, en Cloud She
 | [T5](#t5-la-revisión-de-cloud-run-nunca-queda-ready) | La revisión de Cloud Run nunca queda `Ready` | Paso 9 |
 | [T6](#t6-pip-install-google-adk-me-dejó-una-versión-vieja) | `pip install google-adk` me dejó una versión vieja | Paso 7 |
 | [T7](#t7-macos-el-puerto-5000-devuelve-403) | macOS: el puerto 5000 devuelve `403` | Paso 5 |
+| [T8](#t8-en-cloud-run-el-chat-no-responde-y-run_sse-da-404) | En Cloud Run el chat no responde y `/run_sse` da `404` | Paso 9 |
 
 ---
 
@@ -312,6 +313,41 @@ curl -o /dev/null -w "%{http_code} (%{remote_ip})\n" -X POST http://127.0.0.1:50
 O desactivá AirPlay Receiver en Ajustes → General → AirDrop y Handoff.
 
 En Cloud Shell y Linux no pasa nada de esto.
+
+---
+
+## T8. En Cloud Run el chat no responde y /run_sse da 404
+
+**Síntoma.** El deploy termina bien, la UI carga y el agente aparece en el selector. Escribís un mensaje y **no pasa nada**: ni respuesta ni error visible. En los logs del servicio:
+
+```
+"POST /apps/hotels-app/users/user/sessions HTTP/1.1" 200 OK
+"POST /run_sse HTTP/1.1" 404 Not Found
+```
+
+(También vas a ver `404` en `/dev/...` y `/config/telemetry`: esos son ruido, la UI los consulta aunque el servidor deployado no los expone.)
+
+**Causa.** El `--app_name` tiene un guion. Pegándole directo a la API se ve el motivo real:
+
+```json
+{"detail":"Invalid agent name: 'hotels-app'. Agent names must be valid Python identifiers or paths separated by dots (letters, digits, underscores, and dots)."}
+```
+
+ADK 2.9.x valida que el nombre de la app sea un identificador de Python **recién al ejecutar el agente**, no al deployar ni al crear la sesión. Por eso todo parece andar hasta el primer mensaje. El codelab original usa `hotels-app`.
+
+**Solución.** Usá guion bajo y redeployá:
+
+```bash
+export APP_NAME="hotels_app"
+adk deploy cloud_run ... --app_name=$APP_NAME ... hotel_agent_app/
+```
+
+**Cómo confirmarlo en 10 segundos:**
+
+```bash
+U=https://hotels-service-<ID>-uc.a.run.app
+curl -s $U/list-apps        # ["hotels-app"] → tiene guion, es esto
+```
 
 ---
 

@@ -1,0 +1,76 @@
+# MCP Toolbox for Databases - configuración del workshop.
+# Reemplazá YOUR_PROJECT_ID por el ID de tu proyecto de Google Cloud.
+kind: source
+name: my-cloud-sql-source
+type: cloud-sql-postgres
+project: YOUR_PROJECT_ID
+region: us-central1
+instance: hoteldb-instance
+database: postgres
+user: postgres
+password: postgres
+---
+kind: tool
+name: search-hotels-by-name
+type: postgres-sql
+source: my-cloud-sql-source
+description: Search for hotels based on name.
+parameters:
+  - name: name
+    type: string
+    description: The name of the hotel.
+statement: SELECT * FROM hotels WHERE name ILIKE '%' || $1 || '%';
+---
+kind: tool
+name: search-hotels-by-location
+type: postgres-sql
+source: my-cloud-sql-source
+description: Search for hotels based on location (city). Result is sorted by price from least to most expensive.
+parameters:
+  - name: location
+    type: string
+    description: The city where the hotel is located, for example 'Mendoza' or 'Montevideo'.
+statement: |
+  SELECT *
+  FROM hotels
+  WHERE location ILIKE '%' || $1 || '%'
+  ORDER BY
+    CASE price_tier
+      WHEN 'Midscale' THEN 1
+      WHEN 'Upper Midscale' THEN 2
+      WHEN 'Upscale' THEN 3
+      WHEN 'Upper Upscale' THEN 4
+      WHEN 'Luxury' THEN 5
+      ELSE 99 -- cualquier valor inesperado va al final
+    END;
+---
+kind: tool
+name: search-hotels-by-country
+type: postgres-sql
+source: my-cloud-sql-source
+description: Search for hotels in a country. Use it when the user asks about a whole country instead of a city, for example 'hotels in Chile'. Result is sorted by city and then by price.
+parameters:
+  - name: country
+    type: string
+    description: The country, for example 'Argentina', 'Uruguay' or 'Chile'.
+statement: |
+  SELECT *
+  FROM hotels
+  WHERE country ILIKE '%' || $1 || '%'
+  ORDER BY
+    location,
+    CASE price_tier
+      WHEN 'Midscale' THEN 1
+      WHEN 'Upper Midscale' THEN 2
+      WHEN 'Upscale' THEN 3
+      WHEN 'Upper Upscale' THEN 4
+      WHEN 'Luxury' THEN 5
+      ELSE 99
+    END;
+---
+kind: toolset
+name: my_first_toolset
+tools:
+  - search-hotels-by-name
+  - search-hotels-by-location
+  - search-hotels-by-country

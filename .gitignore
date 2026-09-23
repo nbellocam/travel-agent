@@ -1,0 +1,21 @@
+# entornos virtuales
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# secretos y config local del agente
+.env
+!steps/**/.env.example
+
+# binario del toolbox (se descarga en el paso 5)
+toolbox
+mcp-toolbox/toolbox
+
+# carpetas de trabajo que se crean durante el workshop
+my-agents/
+mcp-toolbox/
+deploy_src/
+
+# sistema
+.DS_Store

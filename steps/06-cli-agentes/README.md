@@ -56,8 +56,6 @@ Ya dentro, tipeá `/mcp` y Enter: se abre el **MCP Manager**, que muestra el est
 
 ![El MCP Manager de agy mostrando MCPToolbox conectado](../../img/06-agy-mcp.png)
 
-> 📸 *Imagen provisoria del codelab original. Captura pendiente: `img/06-agy-mcp.png` — el MCP Manager de `agy` mostrando MCPToolbox conectado.*
-
 **Probalo:**
 
 - `¿Qué hoteles hay en Mendoza?`

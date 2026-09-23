@@ -257,10 +257,6 @@ Ese orden lo puso el `ORDER BY CASE price_tier` del YAML, no un modelo. Probá t
 
 ![La UI del Toolbox ejecutando search-hotels-by-location con Mendoza](../../img/05-toolbox-ui.png)
 
-> 📸 *Imagen provisoria del codelab original. Captura pendiente: `img/05-toolbox-ui.png` — la UI del Toolbox ejecutando `search-hotels-by-location` con `Mendoza`.*
-
-Esta UI es tu **plan B para el workshop**: demuestra las tools sin depender de ningún modelo, login ni red externa.
-
 > ℹ️ El endpoint REST `/api` viene deshabilitado por defecto y responde `410 Gone` (también en 1.1.0). No hace falta: los clientes MCP y `toolbox-core` hablan por `/mcp`.
 
 ## Desde acá, dos caminos

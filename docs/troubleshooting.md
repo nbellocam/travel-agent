@@ -247,7 +247,7 @@ Si no querés actualizar, generá las fuentes con ADK y deployá con `gcloud` a 
 adk deploy cloud_run ... --temp_folder ./deploy_src
 gcloud run deploy hotels-service --source ./deploy_src --region us-central1 \
   --port 8000 --allow-unauthenticated \
-  --set-env-vars GOOGLE_CLOUD_LOCATION=global,GOOGLE_CLOUD_PROJECT=$GOOGLE_CLOUD_PROJECT,GOOGLE_GENAI_USE_VERTEXAI=True
+  --set-env-vars GOOGLE_CLOUD_LOCATION=global,GOOGLE_CLOUD_PROJECT=$GOOGLE_CLOUD_PROJECT,GOOGLE_GENAI_USE_ENTERPRISE=1
 ```
 
 > **Otra causa posible del mismo síntoma**, que conviene descartar: si `agent.py` sigue apuntando a `http://127.0.0.1:5000`, la línea `ToolboxSyncClient(...)` hace una llamada HTTP **en el import**, contra un localhost que dentro del contenedor no tiene nada. Ahí el arranque sí se cuelga por tu código — y, a diferencia del caso de arriba, **vas a ver logs de aplicación**. Por eso este workshop lee la URL de `TOOLBOX_URL`.

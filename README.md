@@ -59,6 +59,10 @@ Todo lo que se rompió durante la preparación de este workshop está documentad
 | `pip install google-adk` te deja una versión vieja | [T6](docs/troubleshooting.md#t6-pip-install-google-adk-me-dejó-una-versión-vieja) |
 | En macOS el Toolbox en el puerto 5000 devuelve `403` | [T7](docs/troubleshooting.md#t7-macos-el-puerto-5000-devuelve-403) |
 
+## Preguntas frecuentes
+
+Seguridad, arquitectura, costos, otros modelos y cómo hacer el workshop en TypeScript, Go, Java o Kotlin: **[docs/preguntas-frecuentes.md](docs/preguntas-frecuentes.md)**.
+
 ## Versiones fijadas
 
 Verificadas el **21-22 de septiembre de 2026**. Si seguís el workshop mucho después, chequealas.
@@ -92,6 +96,7 @@ Verificadas el **21-22 de septiembre de 2026**. Si seguís el workshop mucho des
 .
 ├── README.md                     este archivo
 ├── docs/troubleshooting.md       los 7 problemas y sus soluciones
+├── docs/preguntas-frecuentes.md  preguntas típicas del público, con respuestas cortas
 ├── img/arquitectura.svg          el diagrama de arriba
 └── steps/
     ├── 01-introduccion/          … 11 carpetas, una por paso

@@ -67,7 +67,7 @@ export TOOLBOX_URL=https://toolbox-<ID>-uc.a.run.app
 
 > 🔒 **`--allow-unauthenticated` deja el Toolbox público**, con acceso a tu base. Está bien para una demo con datos ficticios; para cualquier otra cosa, sacá el flag y autenticá al llamador.
 
-> 📸 *Captura sugerida: `img/09-toolbox-cloudrun.png` — el servicio `toolbox` en la consola de Cloud Run, con su URL.*
+![El servicio `toolbox` en la consola de Cloud Run](../../img/09-toolbox-cloudrun.png)
 
 ## 9.2 Apuntar el agente al Toolbox de la nube
 
@@ -96,7 +96,7 @@ export MODEL_LOCATION=global
 export AGENT_PATH="hotel_agent_app/"
 export SERVICE_NAME="hotels-service"
 export APP_NAME="hotels-app"
-export GOOGLE_GENAI_USE_VERTEXAI=True
+export GOOGLE_GENAI_USE_ENTERPRISE=1
 ```
 
 > 🔴 **Dos variables, no una.** El codelab original usa `GOOGLE_CLOUD_LOCATION` para las dos cosas y después hace `--region=$GOOGLE_CLOUD_LOCATION`. Con `gemini-3.5-flash` eso no se puede: la región de Cloud Run tiene que ser una región real y la location del modelo tiene que ser `global`. Si pusieras `GOOGLE_CLOUD_LOCATION=global`, el deploy intentaría crear el servicio en una región llamada "global" y fallaría.
@@ -132,8 +132,6 @@ Service URL: https://hotels-service-<ID>-uc.a.run.app
 Abrí la Service URL: tenés la misma UI de `adk web`, servida desde Cloud Run, consultando la base a través del Toolbox también hosteado en Cloud Run.
 
 ![La UI del agente corriendo en Cloud Run](../../img/09-hotels-service.png)
-
-> 📸 *Imagen provisoria del codelab original. Captura pendiente: `img/09-hotels-service.png` — la UI del agente corriendo en Cloud Run.*
 
 ## Si el deploy se traba
 

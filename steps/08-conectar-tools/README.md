@@ -100,8 +100,6 @@ También funciona con `adk web --allow_origins '*'`, donde además podés abrir 
 
 ![La pestaña de eventos con la llamada a search-hotels-by-location y su respuesta](../../img/08-adk-web-tool-call.png)
 
-> 📸 *Imagen provisoria del codelab original. Captura pendiente: `img/08-adk-web-tool-call.png` — la pestaña de eventos con la llamada a `search-hotels-by-location` y su respuesta.*
-
 ## 8.3 Cosas para probar en vivo
 
 | Pregunta | Qué demuestra |

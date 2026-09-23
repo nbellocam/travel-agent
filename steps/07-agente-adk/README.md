@@ -64,7 +64,7 @@ Choose model (1, 2): 1
 Choose a backend (1, 2, 3): 2
 
 Enter Google Cloud project ID [YOUR_PROJECT_ID]:
-Enter Google Cloud region [us-central1]:
+Enter Google Cloud region [us-central1]: global
 
 Agent created in <HOME>/my-agents/hotel_agent_app:
 - .env
@@ -73,25 +73,24 @@ Agent created in <HOME>/my-agents/hotel_agent_app:
 - agent.py
 ```
 
-Elegí **1** (modelo) y **2** (Vertex AI), y aceptá proyecto y región.
-
 > 🔄 **Cambios respecto del codelab original**: el modelo de la opción 1 ahora es `gemini-3.5-flash` (antes `gemini-2.5-flash`), hay una tercera opción de backend, y se genera además un `.gitignore`.
 
-### Editar el `.env` — esto es obligatorio
+Elegí **1** (modelo) y **2** (Vertex AI), y aceptá proyecto y usa `global` como región.
 
-`adk create` escribe la región que le diste, pero **`gemini-3.5-flash` no existe en `us-central1`**: sólo está en la location `global`. Abrí `hotel_agent_app/.env` y dejalo así (plantilla en [`files/.env.example`](files/.env.example)):
-
-```
-GOOGLE_GENAI_USE_ENTERPRISE=1
-GOOGLE_CLOUD_PROJECT=YOUR_PROJECT_ID
-GOOGLE_CLOUD_LOCATION=global
-```
-
-Si no lo cambiás, el agente arranca bien y falla recién con el primer mensaje:
-
-```
-404 NOT_FOUND. Publisher model `projects/.../locations/us-central1/publishers/google/models/gemini-3.5-flash` was not found...
-```
+> ⚠️ Revisa que quede **GOOGLE_CLOUD_LOCATION=global**
+> `adk create` escribe la región que le diste, pero **`gemini-3.5-flash` no existe en `us-central1`**: sólo está en la location `global`. Abrí `hotel_agent_app/.env` y dejalo así (plantilla en [`files/.env.example`](files/.env.example)):
+>
+> ```
+> GOOGLE_GENAI_USE_ENTERPRISE=1
+> GOOGLE_CLOUD_PROJECT=YOUR_PROJECT_ID
+> GOOGLE_CLOUD_LOCATION=global
+> ```
+>
+> Si no lo cambiás, el agente arranca bien y falla recién con el primer mensaje:
+>
+> ```
+> 404 NOT_FOUND. Publisher model `projects/.../locations/us-central1/publishers/google/models/gemini-3.5-flash` was not > found...
+> ```
 
 Detalle y matriz de modelos por location en [T2](../../docs/troubleshooting.md#t2-404-not_found-publisher-model--was-not-found). Esto sólo afecta al endpoint del modelo: Cloud SQL y el Toolbox siguen en `us-central1`.
 
@@ -148,8 +147,6 @@ adk web --allow_origins '*'
 En Cloud Shell: **Web Preview** en el puerto 8000. Elegí `hotel_agent_app` en el selector y preguntale algo como *"¿cuál es la mejor época para visitar Bariloche?"*. Va a responder con conocimiento del modelo, **sin tocar la base**.
 
 ![La UI de ADK con el agente respondiendo, antes de tener tools](../../img/07-adk-web.png)
-
-> 📸 *Imagen provisoria del codelab original. Captura pendiente: `img/07-adk-web.png` — la UI de ADK con el agente respondiendo, antes de tener tools.*
 
 ## 7.4 Probarlo en la terminal
 

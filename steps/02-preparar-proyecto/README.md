@@ -24,8 +24,6 @@ gcloud config set project <YOUR_PROJECT_ID>
 
 ![Cloud Shell abierto con la salida de gcloud config list project](../../img/02-cloudshell.png)
 
-> 📸 *Imagen provisoria del codelab original. Captura pendiente: `img/02-cloudshell.png` — Cloud Shell abierto con la salida de `gcloud config list project`.*
-
 ## Habilitar las APIs
 
 ```bash

@@ -38,8 +38,6 @@ Tiene que aparecer `hoteldb-instance` con estado `RUNNABLE`.
 
 ![La lista de instancias mostrando RUNNABLE](../../img/03-instancia-runnable.png)
 
-> 📸 *Imagen provisoria del codelab original. Captura pendiente: `img/03-instancia-runnable.png` — la lista de instancias mostrando `RUNNABLE`.*
-
 ---
 
 [← Paso 2](../02-preparar-proyecto/README.md) · [Índice](../../README.md) · [Paso 4: Preparar la base de hoteles →](../04-base-de-datos/README.md)

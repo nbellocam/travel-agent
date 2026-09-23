@@ -40,16 +40,17 @@
   <text x="406" y="118" font-size="10" fill="#5a6b87" text-anchor="middle">MCP</text>
   <text x="604" y="118" font-size="10" fill="#5a6b87" text-anchor="middle">SQL</text>
 
-  <!-- vertex -->
-  <rect x="212" y="216" width="176" height="56" rx="8" fill="#f3e9fb" stroke="#7b3fb8" stroke-width="1.5"/>
-  <text x="300" y="240" font-size="12" font-weight="600" fill="#3d1a5e" text-anchor="middle">Vertex AI — Gemini</text>
-  <text x="300" y="258" font-size="11" fill="#684a85" text-anchor="middle">location: global</text>
+  <!-- gemini enterprise agent platform (ex Vertex AI) -->
+  <rect x="212" y="216" width="176" height="66" rx="8" fill="#f3e9fb" stroke="#7b3fb8" stroke-width="1.5"/>
+  <text x="300" y="236" font-size="12" font-weight="600" fill="#3d1a5e" text-anchor="middle">Gemini Enterprise</text>
+  <text x="300" y="252" font-size="12" font-weight="600" fill="#3d1a5e" text-anchor="middle">Agent Platform — Gemini</text>
+  <text x="300" y="270" font-size="11" fill="#684a85" text-anchor="middle">location: global</text>
   <line x1="300" y1="178" x2="300" y2="212" stroke="#5a6b87" stroke-width="1.6" marker-end="url(#a)"/>
 
   <!-- despliegue -->
-  <rect x="426" y="216" width="330" height="56" rx="8" fill="#eef1f6" stroke="#8a97ad" stroke-width="1.5" stroke-dasharray="5 3"/>
-  <text x="591" y="240" font-size="12" font-weight="600" fill="#33415c" text-anchor="middle">Paso 9 (opcional): Cloud Run</text>
-  <text x="591" y="258" font-size="11" fill="#5a6b87" text-anchor="middle">servicio toolbox + servicio hotels-service</text>
+  <rect x="426" y="216" width="330" height="66" rx="8" fill="#eef1f6" stroke="#8a97ad" stroke-width="1.5" stroke-dasharray="5 3"/>
+  <text x="591" y="245" font-size="12" font-weight="600" fill="#33415c" text-anchor="middle">Paso 9 (opcional): Cloud Run</text>
+  <text x="591" y="263" font-size="11" fill="#5a6b87" text-anchor="middle">servicio toolbox + servicio hotels-service</text>
 
   <text x="24" y="306" font-size="11" fill="#5a6b87">Basado en el codelab oficial de Google, actualizado a septiembre de 2026.</text>
 </svg>

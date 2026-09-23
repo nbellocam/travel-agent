@@ -20,8 +20,6 @@ Los archivos están listos en [`sql/`](sql/): [`01-schema.sql`](sql/01-schema.sq
 
 ![La pantalla de login de Cloud SQL Studio](../../img/04-cloudsql-studio-login.png)
 
-> 📸 *Imagen provisoria del codelab original. Captura pendiente: `img/04-cloudsql-studio-login.png` — la pantalla de login de Cloud SQL Studio.*
-
 ## Crear la tabla
 
 Pegá esto en una pestaña del editor y ejecutalo ([`sql/01-schema.sql`](sql/01-schema.sql)):
@@ -119,27 +117,16 @@ ORDER BY hoteles DESC;
 ```
 country     | hoteles
 ------------+--------
-Argentina   |     18
+Argentina   |      18
 Chile       |       8
 Uruguay     |       6
 ```
 
 ![El resultado del SELECT * con las 32 filas](../../img/04-select-hotels.png)
 
-> 📸 *Imagen provisoria del codelab original. Captura pendiente: `img/04-select-hotels.png` — el resultado del `SELECT *` con las 32 filas.*
-
 También podés probar de una la consulta exacta que va a ejecutar la tool del paso siguiente: busca por ciudad y ordena por precio de menor a mayor. Todas las consultas de validación juntas ([`sql/03-consultas.sql`](sql/03-consultas.sql)):
 
 ```sql
--- Validación: deberías ver 32 filas.
-SELECT * FROM hotels;
-
--- Conteo por país.
-SELECT country, COUNT(*) AS hoteles
-FROM hotels
-GROUP BY country
-ORDER BY hoteles DESC;
-
 -- La misma consulta que va a ejecutar la tool `search-hotels-by-location`.
 SELECT *
 FROM hotels
